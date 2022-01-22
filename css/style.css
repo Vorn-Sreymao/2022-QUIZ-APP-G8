@@ -6,17 +6,15 @@
 body{
     background-color: gainsboro;
 }
-/* #_____________________Manu___________________________ */
-.mamu{
-    width: 100%;
-    height: 50vh;
-}
+/* #______________________________Manu__________________________________ */
 
 nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(128, 128, 128, 0.61);
+    background-color: rgb(150, 148, 148);
+    position: sticky;
+    top: 0;
 }
 
 ul img{
@@ -24,8 +22,8 @@ ul img{
 }
 
 img{
-    width: 50px;
-    height: 50px;
+    width: 37px;
+    height: 37px;
 }
 
 ul{
@@ -38,7 +36,7 @@ ul{
 
 ul li{
     list-style: none;
-    padding: 10px 20px;
+    padding: 5px 10px;
 }
 
 ul li a{
@@ -47,12 +45,25 @@ ul li a{
     
 }
 
+
+ul li:hover {
+    transition: 0.9s ease;
+    border-radius: 5px;
+    background-color: rgb(7, 132, 250);
+    border: none;
+}
+
+ul h2{
+    margin-top: 5px;
+}
+
 .active{
-    border-bottom: 3px solid rgb(4, 32, 160);
+    background-color: rgb(3, 119, 197);
+    border-radius: 5px;
 }
 
 
-/* button add question */
+/*___________________________button add question______________________ */
 button{
     margin-left: 45%;
     margin-top: 20px;
@@ -64,12 +75,13 @@ button{
     background-color: #0E578C;
 }
 
-/* -------------------Display question onbrowser---------------------- */
+/* ___________________________Display question onbrowser______________ */
 .container{
     width: 60%;
     height: auto;
     margin: auto;
 }
+
 .question-box{
     width: 80%;
     height: auto;
@@ -79,11 +91,14 @@ button{
     padding: 10px;
     border-radius: 10px;
 }
+
 #ans,p{
     font-size: 2rem;
     color: #000;
 }
+
 #myanswer{
     font-size: 1.5rem;
     color: #000;
 }
+
