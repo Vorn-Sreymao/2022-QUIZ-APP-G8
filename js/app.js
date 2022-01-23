@@ -47,7 +47,7 @@ for (let qst in arrQuestion){
         // Create button radio------------------------------------
 
         let creatRadio=document.createElement('input');
-        let creatBr=document.createElement('br');
+        var creatBr=document.createElement('br');
         creatRadio.type='radio';
         creatRadio.name='answer'+box.toString();
         creatRadio.value=arrAnswer[qst][text];
@@ -68,22 +68,70 @@ for (let qst in arrQuestion){
         
     }
     // append the now boxOfQuestion in to container of html-----------
-    
+    let btnDelete=document.createElement('button');
+    btnDelete.className='todelete';
+    btnDelete.textContent='Delete';
+    boxOfQuestion.appendChild(creatBr);
+    boxOfQuestion.appendChild(btnDelete);
     mycontainer.appendChild(boxOfQuestion);
 }
  
 let getbuttonAdd=document.querySelector('#btnAdd');
+let toGetform=document.querySelector('#myForm');
+toGetform.style.display='none';
+
+//----------------funtion display quiz-------------------------------
 
 function hidQuestionDisplayQuiz(event){
     event.preventDefault();
     mycontainer.style.display='none';
+    toGetform.style.display='none';
+    getbuttonAdd.style.display='none';
 }
+
+//----------------funtion display question-------------------------------
+
 function hidQuizDisplayQuestion(event){
     event.preventDefault();
     mycontainer.style.display='block';
+    toGetform.style.display='none';
+    getbuttonAdd.style.display='block';
+
 }
+
+
+//-----------------funtion to display btn addd question-------------------------------------
+
+function toDisplayAddBtn(event){
+    event.preventDefault();
+    mycontainer.style.display='none';
+    toGetform.style.display='block';
+}
+
+// --------------------Delete questio btn---------------------------------------------------
+
+function deleteQuestion(event){
+    event.preventDefault();
+    if (event.target.className==='todelete'){
+        event.target.parentElement.remove();
+    }
+}
+
+
+//-------------display quiz----------------------------------------------
 
 let getElementPlayQuiz=document.querySelector('#play_quiz');
 getElementPlayQuiz.addEventListener('click',hidQuestionDisplayQuiz);
+
+//-------------display question-------------------------------------------
+
 let getElementQuestion=document.querySelector('#create_question');
 getElementQuestion.addEventListener('click',hidQuizDisplayQuestion);
+
+// ------------display add question--------------------------------------
+
+let toGetbtnAdd=document.querySelector('#btnAdd');
+toGetbtnAdd.addEventListener('click',toDisplayAddBtn);
+
+//--------------add event to document to delete quetion-------------------
+document.addEventListener('click',deleteQuestion);

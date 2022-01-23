@@ -8,27 +8,34 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="manu">
-        <nav>
-            <ul>
-                <img src="images/logo.png" alt="">
-                <li>Quiz App</li>
-            </ul>
-            <ul>
-                <li class= "active" id="create_question"><a href="#">Create question</a></li>
-                <li id="play_quiz"><a href="">Play quiz</a></li>
-            </ul>
-        </nav>
-    </div>
+    <nav>
+        <ul>
+            <img src="images/logo.png" alt="">
+            <h2>Quiz App</h2>
+        </ul>
+        <ul>
+            <li class= "active" id="create_question"><a href="index.html">Edit Quiz</a></li>
+            <li id="play_quiz"><a href="create_quiz.html">Play quiz</a></li>
+        </ul>
+    </nav>
     <button id="btnAdd">Add question</button>
     <div class="container">
     </div>
-    <form>
+    <form id="myForm">
         <label>YOUR QUESTION :</label>
         <input type="text" name="" id="fill-Question">
         <br>
         <label>YOUR ANSWER :</label>
-        <input type="radio" name="fill-answer" id="fill-answer">
+        <br>
+        <input type="radio" name="fill-answer" id="fill-answer"><input type="text" name="fillAnswer" id="fillAnswer">
+        <br>
+        <input type="radio" name="fill-answer" id="fill-answer"><input type="text" name="fillAnswer" id="fillAnswer">
+        <br>
+        <input type="radio" name="fill-answer" id="fill-answer"><input type="text" name="fillAnswer" id="fillAnswer">
+        <br>
+        <input type="radio" name="fill-answer" id="fill-answer"><input type="text" name="fillAnswer" id="fillAnswer">
+        <br>
+        <button id="addQuestion">Add Question</button>
     </form>
 
     
