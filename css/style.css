@@ -17,6 +17,7 @@ nav{
     justify-content: space-between;
     align-items: center;
     background-color: rgba(128, 128, 128, 0.61);
+
 }
 
 ul img{
@@ -50,6 +51,20 @@ ul li a{
 .active{
     border-bottom: 3px solid rgb(4, 32, 160);
 }
+
+
+/* button add question */
+button{
+    margin-left: 45%;
+    margin-top: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #0E578C;
+}
+
 /* -------------------Display question onbrowser---------------------- */
 .container{
     width: 60%;
@@ -64,6 +79,7 @@ ul li a{
     background-color: #fff;
     padding: 10px;
     border-radius: 10px;
+    border-top: 3px solid blue;
 }
 #ans,p{
     font-size: 2rem;

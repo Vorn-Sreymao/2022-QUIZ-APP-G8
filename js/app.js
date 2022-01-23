@@ -15,7 +15,7 @@ for (let qst in arrQuestion){
 
     let boxOfQuestion=document.createElement('div');
     boxOfQuestion.className='question-box';
-    boxOfQuestion.classList.add('question-box'+box.toString());
+    boxOfQuestion.classList.add('question-box'+ box.toString());
     //console.log(boxOfQuestion)
 
     //---creat Pharagrahp------------------------
@@ -71,5 +71,19 @@ for (let qst in arrQuestion){
     
     mycontainer.appendChild(boxOfQuestion);
 }
+ 
+let getbuttonAdd=document.querySelector('#btnAdd');
 
+function hidQuestionDisplayQuiz(event){
+    event.preventDefault();
+    mycontainer.style.display='none';
+}
+function hidQuizDisplayQuestion(event){
+    event.preventDefault();
+    mycontainer.style.display='block';
+}
 
+let getElementPlayQuiz=document.querySelector('#play_quiz');
+getElementPlayQuiz.addEventListener('click',hidQuestionDisplayQuiz);
+let getElementQuestion=document.querySelector('#create_question');
+getElementQuestion.addEventListener('click',hidQuizDisplayQuestion);
