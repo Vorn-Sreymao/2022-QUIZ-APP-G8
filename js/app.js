@@ -9,7 +9,7 @@ let arrAnswer = [{
         c: "Mao",
         d: "Sok"
     },
-    correctAnswers: "b"
+    correctAnswers: "Cham"
 },
 {
     question: "Question 2: Where do you live?",
@@ -19,7 +19,7 @@ let arrAnswer = [{
         c: "Japan",
         d: "Italy"
     },
-    correctAnswers: "d"
+    correctAnswers: "Italy"
 },
 {
     question: "Question 3: What is the type of computer that you use?",
@@ -29,7 +29,7 @@ let arrAnswer = [{
         c: "Apple",
         d: "Kompi"
     },
-    correctAnswers: "c"
+    correctAnswers: "Apple"
 },
 {
     question: "Question 4: Where is your favourite place?",
@@ -39,7 +39,7 @@ let arrAnswer = [{
         c: "EAon Mail",
         d: "1 January"
     },
-    correctAnswers: "a"
+    correctAnswers: "Kirirom"
 }
 
 ]
@@ -68,20 +68,19 @@ function displayQuestions(questions) {
         for (let answer in answersOfQuestion) {
             let li = document.createElement("li");
             ol.appendChild(li);
-
-            let radio = document.createElement("input");
-            radio.setAttribute("type", "radio");
-            radio.setAttribute("name", "answer" + question);
-            radio.setAttribute("value", answer);
-            li.appendChild(radio);
-
+                        
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
+            if (arrAnswer[question].correctAnswers === answersOfQuestion[answer]){
+                label.style.backgroundColor = "aquamarine";
+                let iconCorrect = document.createElement("i");
+                iconCorrect.className = "fa fa-thumbs-o-up";
+                label.appendChild(iconCorrect);
+            }
+            console.log( answersOfQuestion[answer]);
             li.appendChild(label);
 
-            if (arrAnswer[question].correctAnswers == radio.value) {
-                radio.checked = true;
-            }
+        
         }
 
         // ________________________________Icon ______________________________
@@ -115,7 +114,6 @@ function showQuiz(event){
 
 
 // _____________________Main___________________
-
 displayQuestions(arrAnswer);
 document.addEventListener('click', delete_Quiz)
 
