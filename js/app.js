@@ -53,9 +53,9 @@ let arrAnswer = [{
 // @param questions - the list of  questions
 //
 function displayQuestions(questions) {
-
+    
     for (let question in questions) {
-        let containers = document.querySelector(".container");
+        var containers = document.querySelector(".container");
 
         let ol = document.createElement("ol");
         containers.appendChild(ol);
@@ -105,26 +105,63 @@ function hideQuiz(event){
 
     containers.style.display = "block";
     addBtn.style.display = "block";
+    formAdd.style.display='none';
 }
 
 function showQuiz(event){
     event.preventDefault();
     containers.style.display = "none";
     addBtn.style.display = "none";
+    formAdd.style.display='none';
+}
+function hideQuetionAndgQuiz(event){
+    event.preventDefault();
+    containers.style.display = "none";
+    addBtn.style.display = "none";
+    formAdd.style.display='block';
+}
+function addDataTolist(event){
+    event.preventDefault();
+    formAdd.style.display='none';
+    //get element from form-------------------------------------------
+    let questionAdd=document.querySelector('#questiontext').value;
+    let answerAdd1=document.querySelector('#answer1').value;
+    let answerAdd2=document.querySelector('#answer2').value;
+    let answerAdd3=document.querySelector('#answer3').value;
+    let answerAdd4=document.querySelector('#answer4').value;
+    let dataObject={};
+    let answerlist={};
+    answerlist.a=answerAdd1;
+    answerlist.b=answerAdd2;
+    answerlist.c=answerAdd3;
+    answerlist.d=answerAdd4;
+    dataObject.question=questionAdd;
+    dataObject.answers=answerlist;
+    arrAnswer.push(dataObject);
+    console.log(arrAnswer);
+    displayQuestions(arrAnswer);
+    containers.style.display = "block";
+
 }
 
-
-// _____________________Main___________________
-
-displayQuestions(arrAnswer);
-document.addEventListener('click', delete_Quiz)
 
 // ________________________Variable_______________________________
 
 let hide_Quiz = document.getElementById("create_question");
 let show_Quiz = document.getElementById("play_quiz");
-let addBtn = document.getElementById("btnAdd")
+let addBtn = document.getElementById("btnAdd");
+let formAdd=document.querySelector('.formToAdd');
+let addList=document.querySelector('.addlist');
 
+
+
+
+// _____________________Main___________________
+formAdd.style.display='none';
+displayQuestions(arrAnswer);
+document.addEventListener('click', delete_Quiz)
 // _____________________Show and Hide Quiz________________________________________
 hide_Quiz.addEventListener("click", hideQuiz);
 show_Quiz.addEventListener("click", showQuiz);
+addBtn.addEventListener("click", hideQuetionAndgQuiz);
+addList.addEventListener("click",addDataTolist);
