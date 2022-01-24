@@ -68,11 +68,11 @@ for (let qst in arrQuestion){
         
     }
     // append the now boxOfQuestion in to container of html-----------
-    let btnDelete=document.createElement('button');
-    btnDelete.className='todelete';
-    btnDelete.textContent='Delete';
-    boxOfQuestion.appendChild(creatBr);
-    boxOfQuestion.appendChild(btnDelete);
+    // let btnDelete=document.createElement('button');
+    // btnDelete.className='todelete';
+    // btnDelete.textContent='Delete';
+    // boxOfQuestion.appendChild(creatBr);
+    // // boxOfQuestion.appendChild(btnDelete);
     mycontainer.appendChild(boxOfQuestion);
 }
  
@@ -110,12 +110,12 @@ function toDisplayAddBtn(event){
 
 // --------------------Delete questio btn---------------------------------------------------
 
-function deleteQuestion(event){
-    event.preventDefault();
-    if (event.target.className==='todelete'){
-        event.target.parentElement.remove();
-    }
-}
+// function deleteQuestion(event){
+//     event.preventDefault();
+//     if (event.target.className==='todelete'){
+//         event.target.parentElement.remove();
+//     }
+// }
 
 
 //-------------display quiz----------------------------------------------
