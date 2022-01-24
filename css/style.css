@@ -68,7 +68,43 @@ ul h2{
 }
 
 
-/*___________________________button add question______________________ */
+/* ___________________________Display Questions_____________________________ */
+.container{
+   width: 90%;
+   /* margin-left: 30%; */
+   margin: auto;
+
+
+}
+ol{
+    width: 50%;
+    border: 1px solid blue;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;
+    border: none;
+    border-top: 3px solid rgb(90, 3, 189);
+    list-style: none;
+    margin: auto;
+    margin-top: 10px;
+}
+
+ol li{
+    margin-left: 20px;
+    padding: 5px;
+}
+
+label{
+    margin-left: 10px;
+}
+
+p{
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+
+/* __________________________________Add Question_____________________________ */
 button{
     margin-left: 45%;
     margin-top: 20px;
@@ -78,61 +114,4 @@ button{
     border-radius: 5px;
     color: #fff;
     background-color: #0E578C;
-}
-
-
-/* ___________________________Display question onbrowser______________ */
-.container{
-    width: 60%;
-    height: auto;
-    margin: auto;
-}
-
-.question-box{
-    width: 80%;
-    height: auto;
-    margin: auto;
-    margin-top: 10px;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 10px;
-    border-top: 3px solid blue;
-}
-
-#ans,p{
-    font-size: 1.5rem;
-    color: #000;
-    margin: 5px;
-}
-
-#myanswer{
-    font-size: 1.2rem;
-    color: #000;
-    margin: 5px;
-}
-
-/* ------------botton add question---------------------- */
-#myForm{
-  background-color: rgb(245, 241, 241);
-   width: 50%;
-   height: auto;
-   margin: auto;
-   margin-top: 40px;
-   padding: 20px;
-   border: 1px solid black;
-   border-radius: 10px;
-   border-top: 4px solid blue;
-}
-
-#myForm input[type='text']{
-    margin: 10px;
-    padding: 5px;
-    width: 50%;
-    border-radius: 5px;
-    border: 1px solid black;
-}
-.todelete{
-    margin-left: 0;
-    width: 15%;
-    background-color: crimson;
 }
