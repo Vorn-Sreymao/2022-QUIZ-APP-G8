@@ -53,10 +53,9 @@ let arrAnswer = [{
 // @param questions - the list of  questions
 //
 function displayQuestions(questions) {
-
+    var containers = document.createElement("div");
+    containers.className='container';
     for (let question in questions) {
-        let containers = document.querySelector(".container");
-
         let ol = document.createElement("ol");
         containers.appendChild(ol);
         let questionTitle = document.createElement("p");
@@ -75,21 +74,30 @@ function displayQuestions(questions) {
                 label.style.backgroundColor = "aquamarine";
             }
             li.appendChild(label);
-
         
         }
 
         // ________________________________Icon ______________________________
-        let iconEdit = document.createElement("i");
-        iconEdit.className = "fa fa-edit";
+        // let iconEdit = document.createElement("i");
+        // iconEdit.className = "fa fa-edit";
         let iconDelete = document.createElement("i");
         iconDelete.className = "fa fa-trash";
+
         let mainOfBtn = document.createElement("li");
-        mainOfBtn.appendChild(iconEdit);
+        // mainOfBtn.appendChild(iconEdit);
         mainOfBtn.appendChild(iconDelete);
         questionTitle.appendChild(mainOfBtn);
 
+        // questionTitle.appendChild(iconDelete);
+        document.body.appendChild(containers);
+
+
+        let getContainer=document.querySelectorAll('.container');
+        if (getContainer.length>1){
+            getContainer[0].remove();
+        }
     }
+    
 }
 
 function delete_Quiz(event) {
@@ -113,18 +121,53 @@ function addQuestion(event){
 
 }
 // ______________________Hide and Show Question________________
-let containers = document.querySelector(".container");
 function hideQuiz(event){
+    var containers = document.querySelector(".container");
     event.preventDefault();
-
     containers.style.display = "block";
     addBtn.style.display = "block";
+    formAdd.style.display='none';
 }
 
 function showQuiz(event){
     event.preventDefault();
+    var containers=document.querySelector('.container');
     containers.style.display = "none";
     addBtn.style.display = "none";
+    formAdd.style.display='none';
+}
+function hideQuetionAndgQuiz(event){
+    event.preventDefault();
+    var containers=document.querySelector('.container');
+    containers.style.display='none';
+    addBtn.style.display = "none";
+    formAdd.style.display='block';
+}
+function addDataTolist(event){
+    event.preventDefault();
+    formAdd.style.display='none';
+    addBtn.style.display='block';
+    //get element from form-------------------------------------------
+    //var containers=document.querySelector('.container');
+    //containers.style.display='block';
+    let questionAdd=document.querySelector('#questiontext').value;
+    let answerAdd1=document.querySelector('#answer1').value;
+    let answerAdd2=document.querySelector('#answer2').value;
+    let answerAdd3=document.querySelector('#answer3').value;
+    let answerAdd4=document.querySelector('#answer4').value;
+    let corection=document.querySelector('#corectAnswer').value
+    let dataObject={};
+    let answerlist={};
+    answerlist.a=answerAdd1;
+    answerlist.b=answerAdd2;
+    answerlist.c=answerAdd3;
+    answerlist.d=answerAdd4;
+    dataObject.question=questionAdd;
+    dataObject.answers=answerlist;
+    dataObject.correctAnswers=corection;
+    arrAnswer.push(dataObject);
+    displayQuestions(arrAnswer);
+    //console.log(containers);
 }
 
 
@@ -136,8 +179,19 @@ document.addEventListener('click', delete_Quiz)
 
 let hide_Quiz = document.getElementById("create_question");
 let show_Quiz = document.getElementById("play_quiz");
-let addBtn = document.getElementById("btnAdd")
+let addBtn = document.getElementById("btnAdd");
+let formAdd=document.querySelector('.formToAdd');
+let addList=document.querySelector('.addlist');
 
+
+
+
+// _____________________Main___________________
+formAdd.style.display='none';
+displayQuestions(arrAnswer);
+document.addEventListener('click', delete_Quiz)
 // _____________________Show and Hide Quiz________________________________________
 hide_Quiz.addEventListener("click", hideQuiz);
 show_Quiz.addEventListener("click", showQuiz);
+addBtn.addEventListener("click", hideQuetionAndgQuiz);
+addList.addEventListener("click",addDataTolist);

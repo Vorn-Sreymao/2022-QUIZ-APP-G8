@@ -4,7 +4,7 @@
     font-family: sans-serif;
 }
 body{
-    background-color: gainsboro;
+    background-color: rgb(189, 187, 187);
 }
 /* #______________________________Manu__________________________________ */
 
@@ -112,11 +112,36 @@ button{
     background-color: #0E578C;
 }
 
+/* ----------------form add question------------------------ */
+.formToAdd{
+    width: 50%;
+    height: auto;
+    border: 1px solid black;
+    border-top: 3px solid blue;
+    margin: auto;
+    border-radius: 10px;
+    background-color: rgb(238, 232, 232);
+    padding: 20px;
+    margin-top: 100px;
+}
+.formToAdd input[type='text']{
+    padding: 10px;
+    margin: 10px;
+    width: 70%;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.addlist{
+    width: 20%;
+    padding: 10px;
+    background-color: rgba(0, 0, 255, 0.692);
+}
+.mycontainer{
+    width: 100%;
+    height: auto;
+}
 label{
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
-}
-i{
-    margin-left: 5px;
 }
