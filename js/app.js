@@ -9,7 +9,7 @@ let arrAnswer = [{
         c: "Mao",
         d: "Sok"
     },
-    correctAnswers: "Cham"
+    correctAnswers: "Theavy"
 },
 {
     question: "Question 2: Where do you live?",
@@ -68,35 +68,50 @@ function displayQuestions(questions) {
         for (let answer in answersOfQuestion) {
             let li = document.createElement("li");
             ol.appendChild(li);
-                        
+
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
             if (arrAnswer[question].correctAnswers === answersOfQuestion[answer]){
                 label.style.backgroundColor = "aquamarine";
-                let iconCorrect = document.createElement("i");
-                iconCorrect.className = "fa fa-thumbs-o-up";
-                label.appendChild(iconCorrect);
             }
-            console.log( answersOfQuestion[answer]);
             li.appendChild(label);
 
         
         }
 
         // ________________________________Icon ______________________________
+        let iconEdit = document.createElement("i");
+        iconEdit.className = "fa fa-edit";
         let iconDelete = document.createElement("i");
         iconDelete.className = "fa fa-trash";
-        questionTitle.appendChild(iconDelete);
+        let mainOfBtn = document.createElement("li");
+        mainOfBtn.appendChild(iconEdit);
+        mainOfBtn.appendChild(iconDelete);
+        questionTitle.appendChild(mainOfBtn);
+
     }
 }
 
 function delete_Quiz(event) {
     if (event.target.className === "fa fa-trash") {
-        let parent = event.target.parentElement.parentElement;
-        parent.remove();
+        let index = event.target.parentElement.dataset;
+        arrAnswer.splice(index,1);
+        console.log(arrAnswer);
+        let childOl=document.querySelector("ol");
+        childOl.parentElement.removeChild(childOl);
+        displayQuestions();
+        
     }
+    
 }
 
+
+
+
+
+function addQuestion(event){
+
+}
 // ______________________Hide and Show Question________________
 let containers = document.querySelector(".container");
 function hideQuiz(event){

@@ -94,6 +94,9 @@ label{
 p{
     margin-top: 10px;
     margin-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
 }
 
 
@@ -113,4 +116,7 @@ label{
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
+}
+i{
+    margin-left: 5px;
 }
