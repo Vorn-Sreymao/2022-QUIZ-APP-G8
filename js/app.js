@@ -9,7 +9,7 @@ let arrAnswer = [{
         c: "Mao",
         d: "Sok"
     },
-    correctAnswers: "b"
+    correctAnswers: "Cham"
 },
 {
     question: "Question 2: Where do you live?",
@@ -19,7 +19,7 @@ let arrAnswer = [{
         c: "Japan",
         d: "Italy"
     },
-    correctAnswers: "d"
+    correctAnswers: "Italy"
 },
 {
     question: "Question 3: What is the type of computer that you use?",
@@ -29,7 +29,7 @@ let arrAnswer = [{
         c: "Apple",
         d: "Kompi"
     },
-    correctAnswers: "c"
+    correctAnswers: "Apple"
 },
 {
     question: "Question 4: Where is your favourite place?",
@@ -39,7 +39,7 @@ let arrAnswer = [{
         c: "EAon Mail",
         d: "1 January"
     },
-    correctAnswers: "a"
+    correctAnswers: "Kirirom"
 }
 
 ]
@@ -53,10 +53,9 @@ let arrAnswer = [{
 // @param questions - the list of  questions
 //
 function displayQuestions(questions) {
-    
+    var containers = document.createElement("div");
+    containers.className='container';
     for (let question in questions) {
-        var containers = document.querySelector(".container");
-
         let ol = document.createElement("ol");
         containers.appendChild(ol);
         let questionTitle = document.createElement("p");
@@ -68,27 +67,32 @@ function displayQuestions(questions) {
         for (let answer in answersOfQuestion) {
             let li = document.createElement("li");
             ol.appendChild(li);
-
-            let radio = document.createElement("input");
-            radio.setAttribute("type", "radio");
-            radio.setAttribute("name", "answer" + question);
-            radio.setAttribute("value", answer);
-            li.appendChild(radio);
-
+                        
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
-            li.appendChild(label);
-
-            if (arrAnswer[question].correctAnswers == radio.value) {
-                radio.checked = true;
+            if (arrAnswer[question].correctAnswers === answersOfQuestion[answer]){
+                label.style.backgroundColor = "aquamarine";
+                let iconCorrect = document.createElement("i");
+                iconCorrect.className = "fa fa-thumbs-o-up";
+                label.appendChild(iconCorrect);
             }
+            li.appendChild(label);
+        
         }
 
         // ________________________________Icon ______________________________
         let iconDelete = document.createElement("i");
         iconDelete.className = "fa fa-trash";
         questionTitle.appendChild(iconDelete);
+        document.body.appendChild(containers);
+
+
+        let getContainer=document.querySelectorAll('.container');
+        if (getContainer.length>1){
+            getContainer[0].remove();
+        }
     }
+    
 }
 
 function delete_Quiz(event) {
@@ -99,10 +103,9 @@ function delete_Quiz(event) {
 }
 
 // ______________________Hide and Show Question________________
-let containers = document.querySelector(".container");
 function hideQuiz(event){
+    var containers = document.querySelector(".container");
     event.preventDefault();
-
     containers.style.display = "block";
     addBtn.style.display = "block";
     formAdd.style.display='none';
@@ -110,25 +113,31 @@ function hideQuiz(event){
 
 function showQuiz(event){
     event.preventDefault();
+    var containers=document.querySelector('.container');
     containers.style.display = "none";
     addBtn.style.display = "none";
     formAdd.style.display='none';
 }
 function hideQuetionAndgQuiz(event){
     event.preventDefault();
-    containers.style.display = "none";
+    var containers=document.querySelector('.container');
+    containers.style.display='none';
     addBtn.style.display = "none";
     formAdd.style.display='block';
 }
 function addDataTolist(event){
     event.preventDefault();
     formAdd.style.display='none';
+    addBtn.style.display='block';
     //get element from form-------------------------------------------
+    //var containers=document.querySelector('.container');
+    //containers.style.display='block';
     let questionAdd=document.querySelector('#questiontext').value;
     let answerAdd1=document.querySelector('#answer1').value;
     let answerAdd2=document.querySelector('#answer2').value;
     let answerAdd3=document.querySelector('#answer3').value;
     let answerAdd4=document.querySelector('#answer4').value;
+    let corection=document.querySelector('#corectAnswer').value
     let dataObject={};
     let answerlist={};
     answerlist.a=answerAdd1;
@@ -137,13 +146,16 @@ function addDataTolist(event){
     answerlist.d=answerAdd4;
     dataObject.question=questionAdd;
     dataObject.answers=answerlist;
+    dataObject.correctAnswers=corection;
     arrAnswer.push(dataObject);
-    console.log(arrAnswer);
     displayQuestions(arrAnswer);
-    containers.style.display = "block";
-
+    //console.log(containers);
 }
 
+
+// _____________________Main___________________
+displayQuestions(arrAnswer);
+document.addEventListener('click', delete_Quiz)
 
 // ________________________Variable_______________________________
 
