@@ -2,17 +2,17 @@
 // _____________________Data___________________
 
 let arrAnswer = [{
-    question: "Question 1: what is your name?",
+    question: " what is your name?",
     answers: {
         a: "Cham",
         b: "Theavy",
         c: "Mao",
         d: "Sok"
     },
-    correctAnswers: "Theavy"
+    correctAnswers: "Cham"
 },
 {
-    question: "Question 2: Where do you live?",
+    question: " Where do you live?",
     answers: {
         a: "Cambodia",
         b: "Korea",
@@ -22,7 +22,7 @@ let arrAnswer = [{
     correctAnswers: "Italy"
 },
 {
-    question: "Question 3: What is the type of computer that you use?",
+    question: " What is the type of computer that you use?",
     answers: {
         a: "Dell",
         b: "Lenevo",
@@ -32,7 +32,7 @@ let arrAnswer = [{
     correctAnswers: "Apple"
 },
 {
-    question: "Question 4: Where is your favourite place?",
+    question: " Where is your favourite place?",
     answers: {
         a: "Kirirom",
         b: "Angkor Wat",
@@ -56,10 +56,11 @@ function displayQuestions(questions) {
     var containers = document.createElement("div");
     containers.className='container';
     for (let question in questions) {
+        let numQuestion=parseInt(question)+1;
         let ol = document.createElement("ol");
         containers.appendChild(ol);
         let questionTitle = document.createElement("p");
-        questionTitle.textContent = arrAnswer[question].question;
+        questionTitle.textContent = 'Question '+numQuestion.toString()+' :'+arrAnswer[question].question;
         ol.appendChild(questionTitle);
 
         let answersOfQuestion = arrAnswer[question].answers;
@@ -67,7 +68,7 @@ function displayQuestions(questions) {
         for (let answer in answersOfQuestion) {
             let li = document.createElement("li");
             ol.appendChild(li);
-
+                        
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
             if (arrAnswer[question].correctAnswers === answersOfQuestion[answer]){
@@ -78,17 +79,9 @@ function displayQuestions(questions) {
         }
 
         // ________________________________Icon ______________________________
-        // let iconEdit = document.createElement("i");
-        // iconEdit.className = "fa fa-edit";
         let iconDelete = document.createElement("i");
         iconDelete.className = "fa fa-trash";
-
-        let mainOfBtn = document.createElement("li");
-        // mainOfBtn.appendChild(iconEdit);
-        mainOfBtn.appendChild(iconDelete);
-        questionTitle.appendChild(mainOfBtn);
-
-        // questionTitle.appendChild(iconDelete);
+        questionTitle.appendChild(iconDelete);
         document.body.appendChild(containers);
 
 
@@ -96,30 +89,29 @@ function displayQuestions(questions) {
         if (getContainer.length>1){
             getContainer[0].remove();
         }
-    }
-    
-}
-
-function delete_Quiz(event) {
-    if (event.target.className === "fa fa-trash") {
-        let index = event.target.parentElement.dataset;
-        arrAnswer.splice(index,1);
-        console.log(arrAnswer);
-        let childOl=document.querySelector("ol");
-        childOl.parentElement.removeChild(childOl);
-        displayQuestions();
         
     }
     
 }
 
+/// remove frome data -----------------------------------------------
 
 
 
-
-function addQuestion(event){
-
+function delete_Quiz(event) {
+    if (event.target.className === "fa fa-trash") {
+        let myIconce=event.target.parentElement.nextSibling.textContent;
+        for(let index in arrAnswer){
+            if(arrAnswer[index].answers.a===myIconce){
+                console.log(index);
+                arrAnswer.splice(index,1);
+                console.log(arrAnswer);
+            }
+        }
+    }
+    displayQuestions(arrAnswer);
 }
+
 // ______________________Hide and Show Question________________
 function hideQuiz(event){
     var containers = document.querySelector(".container");
@@ -143,6 +135,10 @@ function hideQuetionAndgQuiz(event){
     addBtn.style.display = "none";
     formAdd.style.display='block';
 }
+
+
+
+
 function addDataTolist(event){
     event.preventDefault();
     formAdd.style.display='none';
@@ -156,16 +152,30 @@ function addDataTolist(event){
     let answerAdd3=document.querySelector('#answer3').value;
     let answerAdd4=document.querySelector('#answer4').value;
     let corection=document.querySelector('#corectAnswer').value
-    let dataObject={};
-    let answerlist={};
-    answerlist.a=answerAdd1;
-    answerlist.b=answerAdd2;
-    answerlist.c=answerAdd3;
-    answerlist.d=answerAdd4;
-    dataObject.question=questionAdd;
-    dataObject.answers=answerlist;
-    dataObject.correctAnswers=corection;
-    arrAnswer.push(dataObject);
+
+    //  to check if the same question ----------------------------------
+    let checkQuestion=true;
+    for (let value of arrAnswer){
+        if(value.question===questionAdd){
+            console.log(value.question);
+            checkQuestion=false;
+        }
+    }
+    if (questionAdd.length>0 && answerAdd1.length>0 && answerAdd2.length>0 && answerAdd3.length>0 && answerAdd4.length>0 && corection.length>0 && checkQuestion)  {
+        let dataObject={};
+        let answerlist={};
+        answerlist.a=answerAdd1;
+        answerlist.b=answerAdd2;
+        answerlist.c=answerAdd3;
+        answerlist.d=answerAdd4;
+        dataObject.question=questionAdd;
+        dataObject.answers=answerlist;
+        dataObject.correctAnswers=corection
+        arrAnswer.push(dataObject);
+    }
+    else{
+        alert('No question add !!')
+    }
     displayQuestions(arrAnswer);
     //console.log(containers);
 }
