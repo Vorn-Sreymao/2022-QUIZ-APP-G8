@@ -80,12 +80,15 @@ ol{
     margin: auto;
     margin-top: 10px;
     padding: 10px;
+
 }
 
 ol li{
     margin-left: 20px;
     padding: 5px;
+    display: flex;
 }
+
 
 label{
     margin-left: 10px;
@@ -98,6 +101,11 @@ p{
     justify-content: space-between;
     font-size: 20px;
 }
+
+ol li label {
+    display: flex;
+}
+
 
 
 /* __________________________________Add Question_____________________________ */
@@ -144,4 +152,92 @@ label{
     display: flex;
     justify-content: space-between;
     border-radius: 5px;
+}
+
+.containersQuiz ol{
+    width: 90%;
+    border: 1px solid blue;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;
+    border: none;
+    border-top: 3px solid rgb(90, 3, 189);
+    list-style: none;
+    margin: auto;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+
+
+/* ______________________________________Play Quiz username____________________________________ */
+.userName{
+    width: 64%;
+    height: 300%;
+    border: 1px solid ;
+    border: none;
+    margin: auto;
+    margin-top: 20px;
+}
+
+
+.userName h2{
+    background-color: #0E578C;
+    padding: 40px;
+    font-size: 40px;
+    color: white;
+    border-radius: 5px 5px 0px 0px;
+}
+
+.inputName input{
+    width: 90%;
+    height: 50px;
+    border: none;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.inputName{
+    width: 100%;
+    height: 80px;
+    border: 1px solid;
+    background-color: white;
+    border: none;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.inputName hr{
+    width: 90%;
+    margin-left: 30px;
+}
+
+
+/* ________________________________________Score Quiz______________________ */
+.header{
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.header_Quiz{
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #1565c0;
+}
+
+
+/* ______________________________________Button Submit_________________________ */
+.btn-submit{
+    width: 10%;
+    height: 8vh;
+    font-size: 25px;
+    margin-left: 290px;
+    
+    
 }
