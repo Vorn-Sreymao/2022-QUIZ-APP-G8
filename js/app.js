@@ -196,14 +196,15 @@ function hideQuetionAndgQuiz(event){
     containers.style.display='none';
     addBtn.style.display = "none";
     formAdd.style.display='block';
+    var message=document.querySelector('.alert');
+    message.style.display='none';
     
 }
 
 
 function addDataTolist(event){
     event.preventDefault();
-    formAdd.style.display='none';
-    addBtn.style.display='block';
+  
     //get element from form-------------------------------------------
     //var containers=document.querySelector('.container');
     //containers.style.display='block';
@@ -222,7 +223,11 @@ function addDataTolist(event){
             checkQuestion=false;
         }
     }
-    if (questionAdd.length>0 && answerAdd1.length>0 && answerAdd2.length>0 && answerAdd3.length>0 && answerAdd4.length>0 && corection.length>0 && checkQuestion)  {
+    let checkCorectAnswer=false;
+    if (corection===answerAdd1 ||corection===answerAdd2||corection===answerAdd3 ||corection===answerAdd4 ){
+        checkCorectAnswer=true;
+    }
+    if (questionAdd.length>0 && answerAdd1.length>0 && answerAdd2.length>0 && answerAdd3.length>0 && answerAdd4.length>0 && corection.length>0 && checkQuestion &&checkCorectAnswer)  {
         let dataObject={};
         let answerlist={};
         answerlist.a=answerAdd1;
@@ -233,11 +238,14 @@ function addDataTolist(event){
         dataObject.answers=answerlist;
         dataObject.correctAnswers=corection
         arrAnswer.push(dataObject);
+        formAdd.style.display='none';
+        addBtn.style.display='block';
+        displayQuestions(arrAnswer);
     }
     else{
-        alert('No question add !!')
+        var message=document.querySelector('.alert');
+        message.style.display='block';
     }
-    displayQuestions(arrAnswer);
     //console.log(containers);
 }
 

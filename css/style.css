@@ -139,6 +139,11 @@ button{
     border-radius: 5px;
     border: 1px solid black;
 }
+.formToAdd p{
+    color: rgb(255, 72, 0);
+    font-size: 1rem;
+    margin-left: 20px;
+}
 .addlist{
     width: 20%;
     padding: 10px;
@@ -240,4 +245,7 @@ label{
     margin-left: 290px;
     
     
+}
+.fa-trash{
+    color: rgba(255, 0, 0, 0.781);
 }
