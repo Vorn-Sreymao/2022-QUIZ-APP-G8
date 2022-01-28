@@ -5,12 +5,12 @@ let arrAnswer = [
     {
     question: " what is your name?",
     answers: {
-        a: "Cham",
+        a: "cham",
         b: "Theavy",
         c: "Mao",
         d: "Sok"
     },
-    correctAnswers: "Cham"
+    correctAnswers: "cham"
 },
 {
     question: " Where do you live?",
@@ -119,11 +119,13 @@ function userPlayQuiz(questions){
         
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
+
             li.appendChild(label)
-            console.log(ol);
+
         }
     }
 }
+
 /// remove frome data -----------------------------------------------
 function delete_Quiz(event) {
     if (event.target.className === "fa fa-trash") {
@@ -177,8 +179,8 @@ function hideQuetionAndgQuiz(event){
     containers.style.display='none';
     addBtn.style.display = "none";
     formAdd.style.display='block';
+    
 }
-
 function addDataTolist(event){
     event.preventDefault();
     formAdd.style.display='none';
@@ -220,8 +222,41 @@ function addDataTolist(event){
 
 function submitScore(){
     showScore.style.display = "block";
-    inputUsersName.style.display = "none";
     buttonSubmit.style.display = "none";
+
+}
+
+// _______________________Increment score_______________________________
+
+function showScores(){
+    let score = document.querySelector(".score");
+    
+    let label = document.querySelectorAll('input[type="radio"]');
+    correctAns = "";
+    noTrue = true;
+    let result = 0;
+    for(let value of label){
+        if(value.checked){
+            isOnetrue= false;
+            for(let answer of arrAnswer){
+                if(value.nextElementSibling.textContent === answer.correctAnswers && isOnetrue===false){
+                    result += 1;
+                    value.nextElementSibling.style.color ="green";
+                    score.textContent = result;
+                    noTrue=false;
+                    isOnetrue= true;
+                }
+                else if (isOnetrue===false){
+                    value.nextElementSibling.style.color ="red";
+                }
+            }  
+        }
+        
+    }
+    if(noTrue){
+        score.textContent=result;
+    }
+
 }
 
 
@@ -272,3 +307,4 @@ console.log(hide_Quiz);
 addBtn.addEventListener("click", hideQuetionAndgQuiz);
 addList.addEventListener("click",addDataTolist);
 buttonSubmit.addEventListener("click", submitScore);
+buttonSubmit.addEventListener("click", showScores);

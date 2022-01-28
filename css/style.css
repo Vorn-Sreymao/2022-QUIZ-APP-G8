@@ -207,7 +207,7 @@ input[type="text"]{
 
 /* ________________________________________Score Quiz______________________ */
 .header{
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -216,7 +216,7 @@ input[type="text"]{
 }
 
 .header_Quiz{
-    height: 30vh;
+    height: 6vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -234,4 +234,25 @@ input[type="text"]{
 }
 .active{
     border-bottom: #0E578C solid 5px;
+}
+
+
+
+/* _______________________________________Score Quiz_____________________  */
+.header{
+    width: 92%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.header_Quiz{
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #1565c0;
 }
