@@ -4,12 +4,12 @@
 let arrAnswer = [{
     question: " what is your name?",
     answers: {
-        a: "Cham",
+        a: "cham",
         b: "Theavy",
         c: "Mao",
         d: "Sok"
     },
-    correctAnswers: "Cham"
+    correctAnswers: "cham"
 },
 {
     question: " Where do you live?",
@@ -124,7 +124,7 @@ function userPlayQuiz(questions){
         
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
-            li.appendChild(label)
+            li.appendChild(label);
         }
 
     }
@@ -137,20 +137,9 @@ btnSubmit.textContent = "Submit";
 document.body.appendChild(btnSubmit);
 
 
-// _______________________Increment score_______________________________
-let results = 0;
-let scores = document.querySelector(".score");
-function increment_Score(event){
-    event.preventDefault();
-    let allAnswers = document.getElementsByTagName("lable");
-    console.log(allAnswers);
-}
 
 
 /// remove frome data -----------------------------------------------
-
-
-
 function delete_Quiz(event) {
     if (event.target.className === "fa fa-trash") {
         let myIconce=event.target.parentElement.nextSibling.textContent;
@@ -207,9 +196,8 @@ function hideQuetionAndgQuiz(event){
     containers.style.display='none';
     addBtn.style.display = "none";
     formAdd.style.display='block';
+    
 }
-
-
 
 
 function addDataTolist(event){
@@ -255,8 +243,41 @@ function addDataTolist(event){
 
 function submitScore(){
     showScore.style.display = "block";
-    inputUsersName.style.display = "none";
     buttonSubmit.style.display = "none";
+
+}
+
+// _______________________Increment score_______________________________
+
+function showScores(){
+    let score = document.querySelector(".score");
+    
+    let label = document.querySelectorAll('input[type="radio"]');
+    correctAns = "";
+    noTrue = true;
+    let result = 0;
+    for(let value of label){
+        if(value.checked){
+            isOnetrue= false;
+            for(let answer of arrAnswer){
+                if(value.nextElementSibling.textContent === answer.correctAnswers && isOnetrue===false){
+                    result += 1;
+                    value.nextElementSibling.style.color ="green";
+                    score.textContent = result;
+                    noTrue=false;
+                    isOnetrue= true;
+                }
+                else if (isOnetrue===false){
+                    value.nextElementSibling.style.color ="red";
+                }
+            }  
+        }
+        
+    }
+    if(noTrue){
+        score.textContent=result;
+    }
+
 }
 
 // ________________________Variable_______________________________
@@ -283,3 +304,4 @@ show_Quiz.addEventListener("click", showQuiz);
 addBtn.addEventListener("click", hideQuetionAndgQuiz);
 addList.addEventListener("click",addDataTolist);
 buttonSubmit.addEventListener("click", submitScore);
+buttonSubmit.addEventListener("click", showScores);

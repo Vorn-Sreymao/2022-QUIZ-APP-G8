@@ -214,7 +214,7 @@ label{
 
 /* ________________________________________Score Quiz______________________ */
 .header{
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -223,7 +223,7 @@ label{
 }
 
 .header_Quiz{
-    height: 30vh;
+    height: 6vh;
     display: flex;
     justify-content: center;
     align-items: center;
