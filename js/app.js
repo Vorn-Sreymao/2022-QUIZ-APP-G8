@@ -1,7 +1,8 @@
 
 // _____________________Data___________________
 
-let arrAnswer = [{
+let arrAnswer = [
+    {
     question: " what is your name?",
     answers: {
         a: "Cham",
@@ -43,20 +44,12 @@ let arrAnswer = [{
 }
 
 ]
-
-
 // _____________________Functions__________________
-
-
 // Display the list of question on the DOM
 // @param questions - the list of  questions
 //
 function displayQuestions(questions) {
-    // let quizCon = document.querySelector(".containersQuiz");
-    // if (quizCon !== null){
-    //     quizCon.style.display = "none"
-    // }
-    var containers = document.createElement("div");
+    let containers = document.createElement("div");
     containers.className='container';
     for (let question in questions) {
         let numQuestion=parseInt(question)+1;
@@ -64,13 +57,15 @@ function displayQuestions(questions) {
         containers.appendChild(ol);
         let questionTitle = document.createElement("p");
         questionTitle.textContent = 'Question '+numQuestion.toString()+' :'+arrAnswer[question].question;
+        console.log(arrAnswer[question].question);
         ol.appendChild(questionTitle);
 
+        
         let answersOfQuestion = arrAnswer[question].answers;
-
         for (let answer in answersOfQuestion) {
             let li = document.createElement("li");
             ol.appendChild(li);
+            console.log(ol);
                         
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
@@ -78,8 +73,9 @@ function displayQuestions(questions) {
                 label.style.backgroundColor = "aquamarine";
             }
             li.appendChild(label);
+
         
-        }
+    }
 
         // ________________________________Icon ______________________________
         let iconDelete = document.createElement("i");
@@ -88,11 +84,12 @@ function displayQuestions(questions) {
         document.body.appendChild(containers);
 
 
+
         let getContainer=document.querySelectorAll('.container');
         if (getContainer.length>1){
             getContainer[0].remove();
         }
-        
+
     }
 }
 
@@ -101,9 +98,7 @@ function userPlayQuiz(questions){
     let containersQuiz = document.createElement("div");
     containersQuiz.className = "containersQuiz";
     inputUsersName.appendChild(containersQuiz);
-    let count = 0;
     for (let question in questions) {
-        // let containersQuizzes = document.querySelector(".containersQuiz");
         let ol = document.createElement("ol");
         containersQuiz.appendChild(ol);
         let questionTitle = document.createElement("p");
@@ -125,80 +120,55 @@ function userPlayQuiz(questions){
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
             li.appendChild(label)
+            console.log(ol);
         }
-
     }
 }
-
-// _______________________________Button Submit_______________________
-let btnSubmit = document.createElement('button');
-btnSubmit.classList.add('btn-submit');
-btnSubmit.textContent = "Submit";
-document.body.appendChild(btnSubmit);
-
-
-// _______________________Increment score_______________________________
-let results = 0;
-let scores = document.querySelector(".score");
-function increment_Score(event){
-    event.preventDefault();
-    let allAnswers = document.getElementsByTagName("lable");
-    console.log(allAnswers);
-}
-
-
 /// remove frome data -----------------------------------------------
-
-
-
 function delete_Quiz(event) {
     if (event.target.className === "fa fa-trash") {
         let myIconce=event.target.parentElement.nextSibling.textContent;
         for(let index in arrAnswer){
             if(arrAnswer[index].answers.a===myIconce){
-                console.log(index);
                 arrAnswer.splice(index,1);
-                console.log(arrAnswer);
             }
         }
-        displayQuestions(arrAnswer);
-    }
-    
+        displayQuestions(arrAnswer);  
+    } 
 }
 
-// ______________________Hide and Show Question________________
-function hideQuiz(event){
-    let quizContainers = document.querySelector(".containersQuiz");
-    if (quizContainers !== null){
-        quizContainers.style.display = "none"
+function showAndHide(event){
+    if(event.target.textContent ==="Play quiz"){
+        let oldContainer = document.getElementsByClassName("containersQuiz");
+        if (oldContainer.length > 0){
+            oldContainer[0].remove()
+        }
+        event.preventDefault();
+        let containers=document.querySelector('.container');
+        containers.style.display = "none";
+        addBtn.style.display = "none";
+        formAdd.style.display='none';
+        userPlayQuiz(arrAnswer);
+        inputUsersName.style.display = "block";
+        buttonSubmit.style.display = "block";
+        showScore.style.display = "none";
+        show_Quiz.style.borderBottom = "5px solid";
+        show_Quiz.style.borderBottomColor = "#0E578C";
+        hide_Quiz.style.borderBottom = "none";
     }
-    var containers = document.querySelector(".container");
-    event.preventDefault();
-    containers.style.display = "block";
-    addBtn.style.display = "block";
-    formAdd.style.display='none';
-    let usersPlay = document.querySelector(".userName"); 
-    usersPlay.style.display = "none";
-    buttonSubmit.style.display = "none";
-    showScore.style.display = "none";
-    
-}
-
-function showQuiz(event){
-    event.preventDefault();
-    let oldContainer = document.getElementsByClassName("containersQuiz");
-    if (oldContainer.length > 0){
-        oldContainer[0].remove()
+    if (event.target.textContent === "Edit Quiz"){
+        let containers=document.querySelector('.container');
+        containers.style.display = "block";
+        addBtn.style.display = "block";
+        formAdd.style.display='none';
+        let usersPlay = document.querySelector(".userName"); 
+        usersPlay.style.display = "none";
+        buttonSubmit.style.display = "none";
+        showScore.style.display = "none";
+        hide_Quiz.style.borderBottom = "5px solid";
+        hide_Quiz.style.borderBottomColor = "#0E578C";
+        show_Quiz.style.borderBottom = "none";
     }
-    var containers=document.querySelector('.container');
-    containers.style.display = "none";
-    addBtn.style.display = "none";
-    formAdd.style.display='none';
-    userPlayQuiz(arrAnswer);
-    inputUsersName.style.display = "block";
-    buttonSubmit.style.display = "block";
-    showScore.style.display = "none";
-    
 }
 
 function hideQuetionAndgQuiz(event){
@@ -209,16 +179,10 @@ function hideQuetionAndgQuiz(event){
     formAdd.style.display='block';
 }
 
-
-
-
 function addDataTolist(event){
     event.preventDefault();
     formAdd.style.display='none';
     addBtn.style.display='block';
-    //get element from form-------------------------------------------
-    //var containers=document.querySelector('.container');
-    //containers.style.display='block';
     let questionAdd=document.querySelector('#questiontext').value;
     let answerAdd1=document.querySelector('#answer1').value;
     let answerAdd2=document.querySelector('#answer2').value;
@@ -245,12 +209,13 @@ function addDataTolist(event){
         dataObject.answers=answerlist;
         dataObject.correctAnswers=corection
         arrAnswer.push(dataObject);
+        saveData();
     }
     else{
         alert('No question add !!')
+       
     }
     displayQuestions(arrAnswer);
-    //console.log(containers);
 }
 
 function submitScore(){
@@ -259,6 +224,29 @@ function submitScore(){
     buttonSubmit.style.display = "none";
 }
 
+
+
+// _________________________savedata______________________________
+function saveData(){
+    localStorage.setItem("arrAnswer" ,JSON.stringify(arrAnswer))
+}
+
+
+
+
+// _______________________________Button Submit_______________________
+let btnSubmit = document.createElement('button');
+btnSubmit.classList.add('btn-submit');
+btnSubmit.textContent = "Submit";
+document.body.appendChild(btnSubmit);
+// _______________________Increment score_______________________________
+let results = 0;
+let scores = document.querySelector(".score");
+function increment_Score(event){
+    event.preventDefault();
+    let allAnswers = document.getElementsByTagName("lable");
+    console.log(allAnswers);
+}
 // ________________________Variable_______________________________
 
 let hide_Quiz = document.getElementById("create_question");
@@ -278,8 +266,9 @@ showScore.style.display='none';
 displayQuestions(arrAnswer);
 document.addEventListener('click', delete_Quiz)
 // _____________________Show and Hide Quiz________________________________________
-hide_Quiz.addEventListener("click", hideQuiz);
-show_Quiz.addEventListener("click", showQuiz);
+document.addEventListener("click", showAndHide);
+console.log(show_Quiz);
+console.log(hide_Quiz);
 addBtn.addEventListener("click", hideQuetionAndgQuiz);
 addList.addEventListener("click",addDataTolist);
 buttonSubmit.addEventListener("click", submitScore);
