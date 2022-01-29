@@ -49,15 +49,19 @@ let arrAnswer = [
 // @param questions - the list of  questions
 //
 function displayQuestions(questions) {
+    let getContainer=document.querySelectorAll('.container');
+    for (let contain of getContainer){
+        contain.remove();
+    }
     let containers = document.createElement("div");
     containers.className='container';
     for (let question in questions) {
-        let numQuestion=parseInt(question)+1;
+        //let numQuestion=parseInt(question)+1;
         let ol = document.createElement("ol");
         containers.appendChild(ol);
         let questionTitle = document.createElement("p");
-        questionTitle.textContent = 'Question '+numQuestion.toString()+' :'+arrAnswer[question].question;
-        console.log(arrAnswer[question].question);
+        questionTitle.textContent = arrAnswer[question].question;
+        //console.log(arrAnswer[question].question);
         ol.appendChild(questionTitle);
 
         
@@ -65,7 +69,7 @@ function displayQuestions(questions) {
         for (let answer in answersOfQuestion) {
             let li = document.createElement("li");
             ol.appendChild(li);
-            console.log(ol);
+            //console.log(ol);
                         
             let label = document.createElement("label");
             label.textContent = answersOfQuestion[answer];
@@ -85,10 +89,7 @@ function displayQuestions(questions) {
 
 
 
-        let getContainer=document.querySelectorAll('.container');
-        if (getContainer.length>1){
-            getContainer[0].remove();
-        }
+       
 
     }
 }
@@ -129,16 +130,16 @@ function userPlayQuiz(questions){
 /// remove frome data -----------------------------------------------
 function delete_Quiz(event) {
     if (event.target.className === "fa fa-trash") {
-        let myIconce=event.target.parentElement.nextSibling.textContent;
+        let myIconce=event.target.parentElement.textContent;
+        console.log(myIconce);
         for(let index in arrAnswer){
-            if(arrAnswer[index].answers.a===myIconce){
+            if(arrAnswer[index].question===myIconce){
                 arrAnswer.splice(index,1);
+                displayQuestions(arrAnswer);  
             }
         }
-        displayQuestions(arrAnswer);  
     } 
 }
-
 function showAndHide(event){
     if(event.target.textContent ==="Play quiz"){
         let oldContainer = document.getElementsByClassName("containersQuiz");
@@ -147,7 +148,9 @@ function showAndHide(event){
         }
         event.preventDefault();
         let containers=document.querySelector('.container');
-        containers.style.display = "none";
+        if (containers != null){
+            containers.style.display='none';
+        }
         addBtn.style.display = "none";
         formAdd.style.display='none';
         userPlayQuiz(arrAnswer);
@@ -160,7 +163,9 @@ function showAndHide(event){
     }
     if (event.target.textContent === "Edit Quiz"){
         let containers=document.querySelector('.container');
-        containers.style.display = "block";
+        if (containers != null){
+            containers.style.display='none';
+        }
         addBtn.style.display = "block";
         formAdd.style.display='none';
         let usersPlay = document.querySelector(".userName"); 
@@ -176,7 +181,9 @@ function showAndHide(event){
 function hideQuetionAndgQuiz(event){
     event.preventDefault();
     var containers=document.querySelector('.container');
-    containers.style.display='none';
+    if (containers != null){
+        containers.style.display='none';
+    }
     addBtn.style.display = "none";
     formAdd.style.display='block';
     var message=document.querySelector('.alert');
@@ -186,29 +193,35 @@ function hideQuetionAndgQuiz(event){
 function addDataTolist(event){
     event.preventDefault();
     //get element from form-------------------------------------------
-    //var containers=document.querySelector('.container');
-    //containers.style.display='block';
+   
 
     let questionAdd=document.querySelector('#questiontext').value;
     let answerAdd1=document.querySelector('#answer1').value;
     let answerAdd2=document.querySelector('#answer2').value;
     let answerAdd3=document.querySelector('#answer3').value;
     let answerAdd4=document.querySelector('#answer4').value;
-    let corection=document.querySelector('#corectAnswer').value
+    //let listCorect=document.querySelector('#corectAnswer');
+    // create opption____________________________________________________
+
+    let opption1=document.querySelector('#option1');
+    opption1.value=answerAdd1;
+    let opption2=document.querySelector('#option2');
+    opption2.value=answerAdd2;
+    let opption3=document.querySelector('#option3');
+    opption3.value=answerAdd3;
+    let opption4=document.querySelector('#option4');
+    
+
+    let corection=document.querySelector('#corectAnswer').value;
 
     //  to check if the same question ----------------------------------
     let checkQuestion=true;
     for (let value of arrAnswer){
         if(value.question===questionAdd){
-            console.log(value.question);
             checkQuestion=false;
         }
     }
-    let checkCorectAnswer=false;
-    if (corection===answerAdd1 ||corection===answerAdd2||corection===answerAdd3 ||corection===answerAdd4 ){
-        checkCorectAnswer=true;
-    }
-    if (questionAdd.length>0 && answerAdd1.length>0 && answerAdd2.length>0 && answerAdd3.length>0 && answerAdd4.length>0 && corection.length>0 && checkQuestion &&checkCorectAnswer)  {
+    if (questionAdd.length>0 && answerAdd1.length>0 && answerAdd2.length>0 && answerAdd3.length>0 && answerAdd4.length>0 && corection.length>0 && checkQuestion )  {
         let dataObject={};
         let answerlist={};
         answerlist.a=answerAdd1;
@@ -315,8 +328,8 @@ displayQuestions(arrAnswer);
 document.addEventListener('click', delete_Quiz)
 // _____________________Show and Hide Quiz________________________________________
 document.addEventListener("click", showAndHide);
-console.log(show_Quiz);
-console.log(hide_Quiz);
+//console.log(show_Quiz);
+//console.log(hide_Quiz);
 addBtn.addEventListener("click", hideQuetionAndgQuiz);
 addList.addEventListener("click",addDataTolist);
 buttonSubmit.addEventListener("click", submitScore);
