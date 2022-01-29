@@ -3,44 +3,44 @@
 
 let arrAnswer = [
     {
-    question: " what is your name?",
+    question: "I were .....(play) football when you arived .",
     answers: {
-        a: "cham",
-        b: "Theavy",
-        c: "Mao",
-        d: "Sok"
+        a: "played",
+        b: "plaied",
+        c: "playing",
+        d: "play"
     },
-    correctAnswers: "cham"
+    correctAnswers: "playing"
 },
 {
-    question: " Where do you live?",
+    question: " which is subordinating  conjunction ?",
     answers: {
-        a: "Cambodia",
-        b: "Korea",
-        c: "Japan",
-        d: "Italy"
+        a: "when",
+        b: "and",
+        c: "on",
+        d: "yet"
     },
-    correctAnswers: "Italy"
+    correctAnswers: "when"
 },
 {
-    question: " What is the type of computer that you use?",
+    question: "what is coordinating conjunction ?",
     answers: {
-        a: "cham",
-        b: "Lenevo",
-        c: "Apple",
-        d: "Kompi"
+        a: "in",
+        b: "on",
+        c: "yet",
+        d: "if"
     },
-    correctAnswers: "Apple"
+    correctAnswers: "yet"
 },
 {
-    question: " Where is your favourite place?",
+    question: "which is reported speech ?",
     answers: {
-        a: "Kirirom",
-        b: "Angkor Wat",
-        c: "EAon Mail",
-        d: "1 January"
+        a: "she was cooking last monthday.",
+        b: "He,said that 'his father is 79 year old.",
+        c: "she had been arrived when stoped play football.",
+        d: "I am doing home work ."
     },
-    correctAnswers: "Kirirom"
+    correctAnswers: "He,said that 'his father is 79 year old."
 }
 
 ]
@@ -210,7 +210,7 @@ function addDataTolist(event){
     let opption3=document.querySelector('#option3');
     opption3.value=answerAdd3;
     let opption4=document.querySelector('#option4');
-    
+    opption4.value=answerAdd4
 
     let corection=document.querySelector('#corectAnswer').value;
 
