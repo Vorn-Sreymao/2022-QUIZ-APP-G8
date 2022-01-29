@@ -67,11 +67,12 @@ ol{
     background-color: white;
     margin-top: 10px;
     border: none;
-    border-top: 4px solid #0E578C ;
+    border-top: 5px solid #0E578C ;
     list-style: none;
     margin: auto;
     margin-top: 10px;
     padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
 }
 
@@ -112,6 +113,8 @@ ol li label {
     border-radius: 5px;
     color: #fff;
     background-color: #0E578C;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 
 #cancel{
@@ -136,6 +139,7 @@ ol li label {
     background-color: #fff;
     padding: 20px;
     margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .formToAdd input[type='text']{
     padding: 10px;
@@ -153,6 +157,7 @@ ol li label {
     width: 20%;
     padding: 10px;
     background-color: rgba(0, 0, 255, 0.692);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .mycontainer{
     width: 100%;
@@ -186,6 +191,8 @@ label{
     cursor: pointer;
     color: #fff;
     font-size: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 
 
@@ -249,6 +256,7 @@ input[type="text"]{
     font-size: 25px;
 
     margin-left: 290px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
     
 }
