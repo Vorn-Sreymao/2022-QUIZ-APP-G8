@@ -72,11 +72,17 @@ function displayQuestions(questions) {
             //console.log(ol);
                         
             let label = document.createElement("label");
+            let image = document.createElement("img");
             label.textContent = answersOfQuestion[answer];
             if (arrAnswer[question].correctAnswers === answersOfQuestion[answer]){
-                label.style.backgroundColor = "aquamarine";
+                image.src = "images/right.png";
+                
+            }
+            else{
+                image.src = "images/wrong.png";
             }
             li.appendChild(label);
+            li.appendChild(image);
 
         
     }
@@ -84,6 +90,8 @@ function displayQuestions(questions) {
         // ________________________________Icon ______________________________
         let iconDelete = document.createElement("i");
         iconDelete.className = "fa fa-trash";
+        iconDelete.style.fontSize = "2rem";
+        iconDelete.style.marginRight = "10px";
         questionTitle.appendChild(iconDelete);
         document.body.appendChild(containers);
 
@@ -246,6 +254,12 @@ function addDataTolist(event){
         saveData();
 }
 
+function btnCancle(event){
+    event.preventDefault();
+    getContainer.style.display = "block";
+   
+}
+
 function submitScore(){
     showScore.style.display = "block";
     buttonSubmit.style.display = "none";
@@ -318,6 +332,7 @@ let addList=document.querySelector('.addlist');
 let inputUsersName = document.querySelector(".userName");
 let showScore = document.querySelector(".header");
 let buttonSubmit = document.querySelector(".btn-submit");
+let buttonCancle = document.querySelector("#cancel");
 
 // _____________________Main___________________
 formAdd.style.display='none';
@@ -334,3 +349,5 @@ addBtn.addEventListener("click", hideQuetionAndgQuiz);
 addList.addEventListener("click",addDataTolist);
 buttonSubmit.addEventListener("click", submitScore);
 buttonSubmit.addEventListener("click", showScores);
+buttonCancle.addEventListener("clcik", btnCancle);
+
